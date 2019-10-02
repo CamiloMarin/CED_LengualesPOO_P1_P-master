@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
     public Transform spawnPosition;
     public Rigidbody cannonBall;
     public float force = 5F;
+    public string escena;
+    public bool muerte; 
 
     public int hp;
 
@@ -24,10 +26,12 @@ public class Character : MonoBehaviour
     {
         hp -= damageValue;
 
-        if (hp <= 0)
+        if (hp <= 0 && muerte == false) 
         {
+          
             Destroy(gameObject);
-            SceneManager.LoadScene("Over", LoadSceneMode.Single);
+            muerte = true;
+            SceneManager.LoadScene(escena, LoadSceneMode.Single);
         }
     }
 }
